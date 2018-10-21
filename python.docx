@@ -1,0 +1,109 @@
+一、python基础
+    1.数据类型、变量、常量
+        1.整数
+        2.浮点数
+        3.字符串
+        4.布尔值
+        5.空值：空值是Python里一个特殊的值，用None表示
+        整数和浮点数在计算机中存储的方式不同，整数的计算永远是精确的;
+        Python支持多种数据类型，在计算机内部，可以把任何数据都看成一个“对象”，而变量就是在程序中用来指向这些数据对象的，对变量赋值就是把数据和变量给关联起来。
+        对变量赋值x = y是把变量x指向真正的对象，该对象是变量y所指向的。随后对变量y的赋值不影响变量x的指向。
+        Python的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如Java对32位整数的范围限制在-2147483648-2147483647。
+        Python的浮点数也没有大小限制，但是超出一定范围就直接表示为inf（无限大）。
+    2.字符集
+        ASCII Unicode UTF-8
+        ord('A')  ---> 65
+        char(25991) ----> '文'
+        str.encode('编码格式')  字符串编码
+        '编码'.decode('编码格式')  解码
+        len()   字符数/字节数
+        # -*- coding: utf-8 -*-     声明编码格式
+    3.格式化
+        1.占位符
+            %d	整数
+            %f	浮点数
+            %s	字符串
+    4.list 集合
+        1.list.append()
+        2.list.insert(1,'xx')    插入到集合1的位置
+        3.list.pop(i?)     删除list末尾的元素或者指定位置的元素，返回值为删除的元素
+    5.tuple 元组  
+        本身不可变，但是其中元素若为list，list的值可以改变
+    6.判断语句   
+        if xx:
+        elif xx:
+        else:
+    7.循环    
+        1.for name in  names:
+            print(name)
+        2.rang(n)    生成一个(0,小于n的整数)的整数序列
+        3.list(range(5))   转换为list
+        4.contine    跳过
+        5.break      结束
+    8.dict
+        1.{key:value}查找value迅速
+        2.'key' in dict ---->判断divt中有没有key返回bool
+        3.d.get('key')   读值，没有则返回null
+        4.d.pop('key')   删除
+        和list比较，dict有以下几个特点：
+        dict:
+        查找和插入的速度极快，不会随着key的增加而变慢；
+        需要占用大量的内存，内存浪费多。
+        而list相反：
+        查找和插入的时间随着元素的增加而增加；
+        占用空间小，浪费内存很少。
+    9.set
+        1.{key}  没有value的dict
+        2.set(list)   可以将list的值转为无重复的key
+    10.数据类型转换
+        int()
+        float()
+        str()
+        bool()    
+二、函数
+    1.理解抽象
+        借助抽象，我们才能不关心底层的具体计算过程，而直接在更高的层次上思考问题。
+        写计算机程序也是一样，函数就是最基本的一种代码抽象的方式。
+    2.调用内置函数
+        API直接调用，abs(),max()
+    3.自定义函数
+        def xxx(argument):
+            print(argument)
+        xxx(xx)
+    4.空函数 
+        def xx():
+            pass            不可省略
+    5.参数检查
+    ifinstance()
+        def myfun(x):
+            if not isinstance(x,(int,float))
+                raise TypeError('xxx')
+            return x
+    6.函数的返回值
+        def myfun(x,y):
+         return x,y
+        a,b = myfun(x,y)
+        返回值为tuple
+    7.默认参数
+        def myfun(l=[]):
+            l.append('end')
+            for num in l:
+                print(num)
+        如果触发默认值，则下次调用函数时默认值中会带有end，默认参数l也是一个变量，也是指向一个对象[]的;
+        所以默认参数要指向一个不变对象
+    8.可变参数
+        def myfun(*num):
+            for n in num:
+                print(n)
+    9.关键字参数
+        def myfun(a,b,**key):
+            pass
+        myfun(1,2,num = 4)
+        key print 为一个dict
+        key 可以以一个dict传入
+    10.命名关键字参数
+        def myfun(a,b,*,city)
+    
+    11.递归
+        函数调用自己，会有递归调用栈溢出的情况，用尾递归解决
+        尾递归就是将计算的值传递，从而达到只占用一个栈的目的
